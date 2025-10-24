@@ -184,6 +184,75 @@
             border-radius: 8px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
+        footer {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            text-align: center;
+            padding: 1rem 2rem;
+            margin-top: 2rem;
+        }
+
+        /* Contact styles */
+        .contact-section .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            align-items: start;
+            margin-top: 1rem;
+        }
+        @media (max-width: 768px) {
+            .contact-section .contact-grid { grid-template-columns: 1fr; }
+        }
+        .contact-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+        }
+        .contact-card a { color: var(--primary-color); text-decoration: none; }
+        .contact-form {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+            display: flex;
+            flex-direction: column;
+            gap: .75rem;
+        }
+        .contact-form label { font-weight: 600; font-size: 0.9rem; }
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: .6rem;
+            border: 1px solid #e6e6e6;
+            border-radius: 6px;
+            font-size: 0.95rem;
+            box-sizing: border-box;
+        }
+        .contact-form button {
+            background: var(--secondary-color);
+            color: var(--text-light);
+            border: none;
+            padding: .75rem 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        .hidden-honeypot { position: absolute; left: -9999px; top: auto; width: 1px; height: 1px; overflow: hidden; }
+        .success-msg { color: green; margin-top: .5rem; }
+        .contact-download { margin-top: 1rem; }
+        .contact-button-fixed {
+            position: fixed;
+            right: 1rem;
+            bottom: 1rem;
+            background: var(--secondary-color);
+            color: var(--text-light);
+            border: none;
+            padding: .75rem 1rem;
+            border-radius: 999px;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+            cursor: pointer;
+            z-index: 1200;
+        }
     </style>
 </head>
 <body>
@@ -226,11 +295,11 @@
         <div class="skills-grid">
             <div class="skill-item">
                 <h3>Programming Languages</h3>
-                <p>Python, SQL, R</p>
+                <p>Python, SQL, Javascript</p>
             </div>
             <div class="skill-item">
                 <h3>Machine Learning</h3>
-                <p>scikit-learn, TensorFlow, PyTorch, Deep Learning</p>
+                <p>scikit-learn, TensorFlow, PyTorch</p>
             </div>
             <div class="skill-item">
                 <h3>Data Processing</h3>
@@ -242,11 +311,11 @@
             </div>
             <div class="skill-item">
                 <h3>Cloud & Big Data</h3>
-                <p>AWS, GCP, Hadoop, Spark</p>
+                <p>AWS, Google Cloud, DigitalOcean</p>
             </div>
             <div class="skill-item">
                 <h3>Tools & Technologies</h3>
-                <p>Git, Docker, Jupyter, MLflow</p>
+                <p>Git, Docker, Jupyter, Postman</p>
             </div>
         </div>
     </section>
@@ -281,42 +350,58 @@
         <h2>Featured Projects</h2>
         <div class="projects-grid">
             <div class="project-item">
-                <h3>Machine Learning Pipeline Development</h3>
+                <h3>Food Recommendation System</h3>
                 <p>Designed and implemented automated ML pipelines for real-time prediction systems.</p>
-                <p>Technologies: Python, scikit-learn, Docker, MLflow</p>
+                <h4>Goal of project:</h4>
+                <p>The goal for this project was to provide personalized food recommendations to users based on their preferences and dietary restrictions.</p>
+                <h4>Challenges:</h4>
+                <p>One of the main challenges was returning the correct recommendations since there needed to be a score.</p>
+                <h4>Solution:</h4>
+                <p>Although not perfect a simple filtering of a healthy quantity of bad ingredients was the score determination.</p>
+                <h4>Methods Used:</h4>
+                <p>The system was designed to be easily extendable for future improvements.</p>
+                <h4>Technologies:</h4>
+                <p>Python, Pandas, NumPy, scikit-learn</p>
+                <p>Link to github repo <a href="https://github.com/Pablosarti7/food-recommendation-system" target="_blank">here</a></p>
             </div>
             <div class="project-item">
-                <h3>Data Analysis Dashboard</h3>
-                <p>Created interactive dashboards for business metrics visualization.</p>
-                <p>Technologies: Python, Plotly, Streamlit</p>
+                <h3>OpenAI Assistants Chatbots</h3>
+                <p>Developed AI-powered customer service chatbots to assist users with FAQs and menu questions.</p>
+                <h4>Goal of project:</h4>
+                <p>The goal of the project was to help customers get quick and accurate responses to their inquiries.</p>
+                <h4>Challenges:</h4>
+                <p>One of the main challenges was be able to update the RAG system seamlessly.</p>
+                <h4>Solution:</h4>
+                <p>Using n8n connectiong to Google Drive and a vector database service like Pinecone, I was able to just drag and drop new documents whenever the business had new items for the menu.</p>
+                <h4>Methods Used:</h4>
+                <p>The key here was automation so that I did not have to train the model again when ever there was a menu update.</p>
+                <h4>Technologies:</h4>
+                <p>Python, OpenAI API, n8n, Javascript, Supabase</p>
+                <p>Link to github repo <a href="https://github.com/Pablosarti7/openai-assistant-chatbots" target="_blank">here</a></p>
             </div>
         </div>
     </section>
-    
-    <script>
-        // Mobile menu functionality
-        const hamburger = document.querySelector('.hamburger');
-        const nav = document.querySelector('nav');
-        const navLinks = document.querySelectorAll('nav a');
 
-        // Toggle menu when hamburger is clicked
-        hamburger.addEventListener('click', () => {
-            nav.classList.toggle('active');
-        });
+    <!-- Contact Section (REPLACED) -->
+    <section id="contact" class="section contact-section">
+        <h2>Contact</h2>
+        <div class="contact-grid">
+            <div class="contact-card">
+                <p><strong>Email</strong><br><a href="mailto:paulsarti7@gmail.com">paulsarti7@gmail.com</a></p>
+                <p><strong>Connect</strong><br>
+                    <a href="https://www.linkedin.com/in/pablo-sarti/" target="_blank" rel="noopener">LinkedIn</a> ·
+                    <a href="https://github.com/Pablosarti7" target="_blank" rel="noopener">GitHub</a>
+                </p>
+                <p class="contact-download"><a href="resume.pdf" download>Download Resume (PDF)</a></p>
+                <p style="font-size:0.9rem;color:#666;margin-top:1rem;">Prefer direct email? use the address above. Messages are typically replied to within 48 hours.</p>
+            </div>
 
-        // Close menu when a link is clicked
-        navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                nav.classList.remove('active');
-            });
-        });
+        </div>
+    </section>
 
-        // Close menu when clicking outside
-        document.addEventListener('click', (e) => {
-            if (!nav.contains(e.target) && !hamburger.contains(e.target)) {
-                nav.classList.remove('active');
-            }
-        });
-    </script>
+    <footer class="footer">
+        <p>&copy; <span id="year"></span> Pablo Sarti. All rights reserved.</p>
+    </footer>
+
 </body>
 </html>
